@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogify - AI Dog Breed Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        header {
+            background: #50b3a2;
+            color: white;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        .cta-button {
+            display: inline-block;
+            font-size: 18px;
+            color: white;
+            background: #e8491d;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 10px 0;
+        }
+        .product {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .pricing-plan {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        #feedback-form {
+            background: #fff;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        #feedback-form input, #feedback-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #image-upload {
+            margin: 20px 0;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>Dogify</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#feedback">Feedback</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="home">
+            <h1>Welcome to Dogify</h1>
+            <p>Upload an image of a dog and our AI will classify its breed!</p>
+            <a href="#" class="cta-button" id="try-now">Try Now</a>
+            <a href="#" class="cta-button" id="sign-up">Sign Up</a>
+            <div id="image-upload">
+                <input type="file" id="file-input" accept="image/*">
+                <button id="upload-button">Upload and Classify</button>
+            </div>
+            <div id="result"></div>
+        </section>
+
+        <section id="products">
+            <h2>Dog Products</h2>
+            <div class="product">
+                <h3>Premium Dog Food</h3>
+                <p>High-quality nutrition for your furry friend.</p>
+                <button class="cta-button">Buy Now</button>
+            </div>
+            <div class="product">
+                <h3>Cozy Dog Bed</h3>
+                <p>Ensure your dog gets the best sleep possible.</p>
+                <button class="cta-button">Buy Now</button>
+            </div>
+        </section>
+
+        <section id="pricing">
+            <h2>Subscription Plans</h2>
+            <div class="pricing-plan">
+                <h3>Free Plan</h3>
+                <ul>
+                    <li>Basic breed classification</li>
+                    <li>5 uploads per month</li>
+                    <li>Standard processing speed</li>
+                </ul>
+                <button class="cta-button">Choose Free</button>
+            </div>
+            <div class="pricing-plan">
+                <h3>Premium Plan</h3>
+                <ul>
+                    <li>Advanced breed classification</li>
+                    <li>Unlimited uploads</li>
+                    <li>Faster processing</li>
+                    <li>Detailed breed insights</li>
+                </ul>
+                <button class="cta-button">Choose Premium</button>
+            </div>
+        </section>
+
+        <section id="feedback">
+            <h2>We Value Your Feedback</h2>
+            <form id="feedback-form">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="feedback-text" placeholder="Your Feedback" required></textarea>
+                <button type="submit" class="cta-button">Submit Feedback</button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById('try-now').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Try our AI classifier now!');
+        });
+
+        document.getElementById('sign-up').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Sign up for an account!');
+        });
+
+        document.getElementById('upload-button').addEventListener('click', function() {
+            const fileInput = document.getElementById('file-input');
+            const file = fileInput.files[0];
+            if (file) {
+                // Simulating API call
+                setTimeout(() => {
+                    document.getElementById('result').innerHTML = 'Classification Result: Labrador Retriever (95% confidence)';
+                }, 2000);
+            } else {
+                alert('Please select an image first.');
+            }
+        });
+
+        document.getElementById('feedback-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const feedback = document.getElementById('feedback-text').value;
+            
+            // Simulating feedback submission
+            console.log('Feedback received:', { name, email, feedback });
+            alert('Thank you for your feedback!');
+            this.reset();
+        });
+
+        // Simulating premium features
+        function isPremiumUser() {
+            // In a real app, this would check the user's subscription status
+            return false;
+        }
+
+        function classifyBreed(image) {
+            if (isPremiumUser()) {
+                // Premium user: faster processing, detailed insights
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        resolve({
+                            breed: 'Labrador Retriever',
+                            confidence: 95,
+                            details: 'Friendly, outgoing, and high-spirited companions...'
+                        });
+                    }, 1000); // Faster processing
+                });
+            } else {
+                // Free user: basic classification, slower processing
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        resolve({
+                            breed: 'Labrador Retriever',
+                            confidence: 90
+                        });
+                    }, 3000); // Slower processing
+                });
+            }
+        }
+    </script>
+</body>
+</html>
